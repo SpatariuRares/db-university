@@ -1,0 +1,34 @@
+SELECT * 
+FROM `students`
+WHERE `date_of_birth` LIKE '1990%'
+
+SELECT * 
+FROM `courses`
+WHERE cfu>10
+
+SELECT * 
+FROM `students`
+WHERE YEAR(CURRENT_DATE) - YEAR(`date_of_birth`)>31 
+OR YEAR(CURRENT_DATE) - YEAR(`date_of_birth`)=31
+AND MONTH(CURRENT_DATE)>= MONTH(`date_of_birth`)
+AND DAY(CURRENT_DATE) >= DAY(`date_of_birth`)
+
+SELECT * FROM `courses`
+WHERE period='I semestre'
+AND year=1
+
+SELECT * 
+FROM `exams`
+WHERE HOUR(`hour`)>=14
+AND date LIKE '2020-06-20'
+
+SELECT * 
+FROM `degrees`
+WHERE `level` like 'magistrale'
+
+SELECT COUNT(id) 
+FROM `departments`
+
+SELECT COUNT(id)
+FROM `teachers`
+WHERE phone IS null
