@@ -8,8 +8,23 @@ WHERE cfu>10
 
 SELECT * 
 FROM `students`
-WHERE WHERE TIMESTAMPDIFF(YEAR,`date_of_birth`,CURDATE()) > 30
+WHERE TIMESTAMPDIFF(YEAR,`date_of_birth`,CURDATE()) > 30
 
+SELECT * 
+FROM `students`
+WHERE (
+	YEAR(CURRENT_DATE)-YEAR(date_of_birth)>31
+    OR(
+        YEAR(CURRENT_DATE)-YEAR(date_of_birth)=31
+        AND (
+            MONTH(CURRENT_DATE)>MONTH(date_of_birth)
+    		OR(
+                MONTH(CURRENT_DATE)=MONTH(date_of_birth)
+               	AND DAY(CURRENT_DATE)>=DAY(date_of_birth)
+            )
+        )
+    )  
+)
 
 SELECT * FROM `courses`
 WHERE period='I semestre'
