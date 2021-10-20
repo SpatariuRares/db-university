@@ -43,3 +43,21 @@ JOIN `exam_student` ON `exam_student`.`student_id` = `students`.`id`
 JOIN `exams` ON `exam_student`.`exam_id` = `exams`.`id`
 JOIN `courses` ON `exams`.`course_id` = `courses`.`id`
 GROUP BY `courses`.`id`, `students`.`id`  
+
+grup by
+SELECT YEAR(`students`.`enrolment_date`), COUNT(YEAR(`students`.`enrolment_date`))
+FROM `students`
+GROUP BY YEAR(`students`.`enrolment_date`)
+
+SELECT `teachers`.`office_address`, COUNT(`teachers`.`office_address`)
+FROM `teachers`
+GROUP BY `teachers`.`office_address`
+
+SELECT `exam_student`.`exam_id`, AVG(`exam_student`.`vote`)
+FROM `exam_student`
+GROUP BY `exam_student`.`exam_id`
+
+SELECT `departments`.`name`, COUNT(`degrees`.`id`) AS 'total'
+FROM `departments`
+INNER JOIN `degrees` ON `departments`.`id`= `degrees`.`department_id`
+GROUP BY `departments`.`id`
